@@ -3,8 +3,8 @@
 export USER=alterwin
 export HOME=/home/alterwin
 
-REPO_DIR="/files/$1"
-WEB_DIR="~/web/$2/public_html/"
+REPO_DIR="$HOME/files/$1"
+WEB_DIR="$HOME/web/$2/public_html/"
 
 
 changed_files="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
