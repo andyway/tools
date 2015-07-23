@@ -31,45 +31,45 @@ function run() {
     }
 
     // check if the request comes from github server
-        foreach ($config['endpoints'] as $endpoint) {
-            // check if the push came from the right repository and branch
-            if ($payload->repository->url == 'https://github.com/' . $endpoint['repo']
-                && $payload->ref == 'refs/heads/' . $endpoint['branch']) {
+    foreach ($config['endpoints'] as $endpoint) {
+        // check if the push came from the right repository and branch
+        if ($payload->repository->url == 'https://github.com/' . $endpoint['repo']
+            && $payload->ref == 'refs/heads/' . $endpoint['branch']) {
 
-                // execute update script, and record its output
-                ob_start();
-                passthru($endpoint['run']);
-                $output = ob_get_contents();
+            // execute update script, and record its output
+            ob_start();
+            passthru($endpoint['run']);
+            $output = ob_get_contents();
 
-                // prepare and send the notification email
-                if (isset($config['email'])) {
-                    // send mail to someone, and the github user who pushed the commit
-                    $body = '<p>The Github user <a href="https://github.com/'
-                    . $payload->pusher->name .'">@' . $payload->pusher->name . '</a>'
-                    . ' has pushed to ' . $payload->repository->url
-                    . ' and consequently, ' . $endpoint['action']
-                    . '.</p>';
+            // prepare and send the notification email
+            if (isset($config['email'])) {
+                // send mail to someone, and the github user who pushed the commit
+                $body = '<p>The Github user <a href="https://github.com/'
+                . $payload->pusher->name .'">@' . $payload->pusher->name . '</a>'
+                . ' has pushed to ' . $payload->repository->url
+                . ' and consequently, ' . $endpoint['action']
+                . '.</p>';
 
-                    $body .= '<p>Here\'s a brief list of what has been changed:</p>';
-                    $body .= '<ul>';
-                    foreach ($payload->commits as $commit) {
-                        $body .= '<li>'.$commit->message.'<br />';
-                        $body .= '<small style="color:#999">added: <b>'.count($commit->added)
-                            .'</b> &nbsp; modified: <b>'.count($commit->modified)
-                            .'</b> &nbsp; removed: <b>'.count($commit->removed)
-                            .'</b> &nbsp; <a href="' . $commit->url
-                            . '">read more</a></small></li>';
-                    }
-                    $body .= '</ul>';
-                    $body .= '<p>What follows is the output of the script:</p><pre>';
-                    $body .= $output. '</pre>';
-                    $body .= '<p>Cheers, <br/>Github Webhook Endpoint</p>';
-
-                    mail($config['email']['to'], $endpoint['action'], $body, $headers);
+                $body .= '<p>Here\'s a brief list of what has been changed:</p>';
+                $body .= '<ul>';
+                foreach ($payload->commits as $commit) {
+                    $body .= '<li>'.$commit->message.'<br />';
+                    $body .= '<small style="color:#999">added: <b>'.count($commit->added)
+                        .'</b> &nbsp; modified: <b>'.count($commit->modified)
+                        .'</b> &nbsp; removed: <b>'.count($commit->removed)
+                        .'</b> &nbsp; <a href="' . $commit->url
+                        . '">read more</a></small></li>';
                 }
-                return true;
+                $body .= '</ul>';
+                $body .= '<p>What follows is the output of the script:</p><pre>';
+                $body .= $output. '</pre>';
+                $body .= '<p>Cheers, <br/>Github Webhook Endpoint</p>';
+
+                mail($config['email']['to'], $endpoint['action'], $body, $headers);
             }
+            return true;
         }
+    }
 }
 
 try {

@@ -1,14 +1,14 @@
 {
     "email": {
         "from": "github-hook@alterhaus.com",
-        "to": "ai@alterwin.com"
+        "to": "ai@guta.ch"
     },
     "endpoints": [
         {
             "repo": "andyway/alterhaus",
             "branch": "master",
-            "action": "Server beta.alterhaus.com has been updated",
-            "run": "/home/alterwin/files/tools/alterhaus-pull-project.sh"
+            "action": "server beta.alterhaus.com has been updated",
+            "run": "/home/alterwin/files/tools/pull-project.sh alterhaus beta.alterhaus.com"
         }
     ]
 }
