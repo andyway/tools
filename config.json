@@ -8,7 +8,13 @@
             "repo": "andyway/alterhaus",
             "branch": "master",
             "action": "server beta.alterhaus.com has been updated",
-            "run": "/home/alterwin/files/tools/pull-project.sh alterhaus beta.alterhaus.com"
+            "run": "/home/alterwin/files/tools/pull-project.sh alterhaus_beta beta.alterhaus.com"
+        },
+        {
+            "repo": "andyway/alterhaus",
+            "branch": "stable",
+            "action": "server www.alterhaus.com has been updated",
+            "run": "/home/alterwin/files/tools/pull-project.sh alterhaus_stable alterhaus.com"
         }
     ]
 }
