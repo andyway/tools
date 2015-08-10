@@ -23,9 +23,16 @@ if [[  ! -d "${REPO_DIR}" || ! -L "${WEB_DIR}" ]]; then
 	#check_run package.json "npm install"
 	#check_run bower.json "bower install"
 
+
 	echo "---------------- npm & bower install ---------------"
 	npm install
 	bower install
+
+	echo "-------------------- Building ----------------------"
+	gulp build
+
+#	rm -rf /home/alterwin/web/beta.alterhaus.com/public_html/*
+#	cp -R dist/* /home/alterwin/web/beta.alterhaus.com/public_html/
 
 	echo "--- Rsyncing from "$REPO_DIR/dist/" to $WEB_DIR ---"
 	rsync -rtv "$REPO_DIR/dist/" $WEB_DIR
