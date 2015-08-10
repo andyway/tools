@@ -20,11 +20,12 @@ if [[  ! -d "${REPO_DIR}" || ! -L "${WEB_DIR}" ]]; then
 	git pull
 
 	# Run `npm install` if package.json changed and `bower install` if `bower.json` changed.
-	check_run package.json "npm install"
-	check_run bower.json "bower install"
+	#check_run package.json "npm install"
+	#check_run bower.json "bower install"
 
-	echo "-------------------- Building ----------------------"
-	gulp build
+	echo "---------------- npm & bower install ---------------"
+	npm install
+	bower install
 
 #	rm -rf /home/alterwin/web/beta.alterhaus.com/public_html/*
 #	cp -R dist/* /home/alterwin/web/beta.alterhaus.com/public_html/
