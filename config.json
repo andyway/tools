@@ -9,8 +9,8 @@
             "branch": "master",
             "action": "server beta.alterhaus.com has been updated",
             "run_user": "alterwin",
-            "dist_dir": "/home/alterwin/files/alterhaus_beta/dist/",
-            "web_dir": "/home/alterwin/web/beta.alterhaus.com/public_html/",
+            "dist_dir": "/home/alterwin/files/alterhaus_beta",
+            "web_dir": "/home/alterwin/web/beta.alterhaus.com/public_html",
             "run": "/home/alterwin/files/tools/build-project.sh"
         },
         {
@@ -18,8 +18,8 @@
             "branch": "stable",
             "action": "server www.alterhaus.com has been updated",
             "run_user": "alterwin",
-            "dist_dir": "/home/alterwin/files/alterhaus_stable/dist/",
-            "web_dir": "/home/alterwin/web/alterhaus.com/public_html/",
+            "dist_dir": "/home/alterwin/files/alterhaus_stable",
+            "web_dir": "/home/alterwin/web/alterhaus.com/public_html",
             "run": "/home/alterwin/files/tools/build-project.sh"
         }
     ]
