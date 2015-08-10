@@ -37,8 +37,9 @@ function run() {
             && $payload->ref == 'refs/heads/' . $endpoint['branch']) {
 
             // execute update script, and record its output
+            $run_command = $endpoint['run'] + ' ' + $endpoint['run_user'] + ' ' + $endpoint['dist_dir'] + ' ' + $endpoint['web_dir'];
             ob_start();
-            passthru($endpoint['run']);
+            passthru($run_command);
             $output = ob_get_contents();
 
             // prepare and send the notification email
