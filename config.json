@@ -21,6 +21,15 @@
             "dist_dir": "/home/alterwin/files/alterhaus_stable",
             "web_dir": "/home/alterwin/web/alterhaus.com/public_html",
             "run": "/home/alterwin/files/tools/build-project.sh"
+        },
+        {
+            "repo": "andyway/alterenergo",
+            "branch": "master",
+            "action": "server www.alterenergo.com.ua has been updated",
+            "run_user": "alterwin",
+            "dist_dir": "/home/alterwin/files/alterenergo",
+            "web_dir": "/home/alterwin/web/alterenergo.com.ua/public_html",
+            "run": "/home/alterwin/files/tools/build-project.sh"
         }
     ]
 }
