@@ -27,9 +27,6 @@ if [[  ! -d "${REPO_DIR}" || ! -L "${WEB_DIR}" ]]; then
 	npm install
 	bower install
 
-#	rm -rf /home/alterwin/web/beta.alterhaus.com/public_html/*
-#	cp -R dist/* /home/alterwin/web/beta.alterhaus.com/public_html/
-
 	echo "--- Rsyncing from "$REPO_DIR/dist/" to $WEB_DIR ---"
 	rsync -rtv "$REPO_DIR/dist/" $WEB_DIR
 else
