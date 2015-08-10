@@ -29,7 +29,13 @@ if [[  ! -d "${REPO_DIR}" || ! -L "${WEB_DIR}" ]]; then
 	bower install
 
 	echo "-------------------- Building ----------------------"
-	gulp build
+	
+	if [ -f "Gruntfile.js" ]
+	then
+	    grunt build
+	else
+		gulp build
+	fi
 
 #	rm -rf /home/alterwin/web/beta.alterhaus.com/public_html/*
 #	cp -R dist/* /home/alterwin/web/beta.alterhaus.com/public_html/
